@@ -11,6 +11,7 @@ public class SearchResults {
     @JsonProperty("Search")
     private List<result> search;
     private int totalResults;
+    @JsonProperty("Response")
     boolean response;
 
     public List<result> getSearch() {

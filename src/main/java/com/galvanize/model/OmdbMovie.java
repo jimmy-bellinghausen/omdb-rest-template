@@ -58,34 +58,43 @@ public class OmdbMovie {
     @JsonProperty("Response")
     private String response;
 
-    class OmdbRating {
-        @JsonProperty("Source")
-        private String source;
-        @JsonProperty("Value")
-        private String value;
 
-        public String getSource() {
-            return source;
-        }
+}
+class OmdbRating {
+    @JsonProperty("Source")
+    private String source;
+    @JsonProperty("Value")
+    private String value;
 
-        public void setSource(String source) {
-            this.source = source;
-        }
+    public OmdbRating(String source, String value) {
+        this.source = source;
+        this.value = value;
+    }
 
-        public String getValue() {
-            return value;
-        }
+    public OmdbRating() {
+    }
 
-        public void setValue(String value) {
-            this.value = value;
-        }
+    public String getSource() {
+        return source;
+    }
 
-        @Override
-        public String toString() {
-            return "OmdbRating{" +
-                    "source='" + source + '\'' +
-                    ", value='" + value + '\'' +
-                    '}';
-        }
+    public void setSource(String source) {
+        this.source = source;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return "OmdbRating{" +
+                "source='" + source + '\'' +
+                ", value='" + value + '\'' +
+                '}';
     }
 }
