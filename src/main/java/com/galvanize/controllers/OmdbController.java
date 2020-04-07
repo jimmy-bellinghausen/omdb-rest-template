@@ -19,7 +19,14 @@ public class OmdbController {
     }
 
     @GetMapping
-    public SearchResults searchForResults(@RequestParam String searchTerm){
+    public SearchResults searchForResults(
+            @RequestParam String searchTerm,
+            @RequestParam(required = false) TYPE type,
+            @RequestParam(required = false) Integer yearOfRelease,
+            @RequestParam(required = false) Integer pageNumber){
+        if(type!=null) searchTerm+="&type="+type;
+        if(yearOfRelease!=null) searchTerm+="&y="+yearOfRelease;
+        if(pageNumber!=null) searchTerm+="&page="+pageNumber;
         return restTemplate.getForObject(searchBase+searchTerm, SearchResults.class);
     }
 
@@ -28,4 +35,8 @@ public class OmdbController {
         return restTemplate.getForObject( movieBase + id, OmdbMovie.class );
     }
 
+}
+
+enum TYPE{
+    movie, series, episode
 }
